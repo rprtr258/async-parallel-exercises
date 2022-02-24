@@ -1,0 +1,24 @@
+version: '3'
+
+tasks:
+  bench:
+    env:
+      BENCH_ARGS: f={{.FUNCTION}}
+    cmds:
+      - ./../../venv/Scripts/python ../../bench.py > tests.md
+      - mv tests.md {{.FUNCTION}}_tests.md
+      - mv bench.png {{.FUNCTION}}_bench.png
+  clear:
+    - cat *_tests.md > tests.md
+    - ls *_bench.png >> tests.md
+    - rm *_tests.md
+  bench:is-prime:
+    cmds:
+      - task: bench
+        vars:
+          FUNCTION: "is_prime"
+  bench:factorize:
+    cmds:
+      - task: bench
+        vars:
+          FUNCTION: "factorize"

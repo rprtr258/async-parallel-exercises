@@ -1,0 +1,1 @@
+{'serial': 0.4755547046661377, 'procs(p=2,f=factorize)': 1.7103567123413086, 'procs(p=4,f=factorize)': 2.923666477203369, 'procs(p=8,f=factorize)': 3.1613717079162598, 'procs_futures(p=2,f=factorize)': 2.2145543098449707, 'procs_futures(p=4,f=factorize)': 2.152256488800049, 'procs_futures(p=8,f=factorize)': 3.2935357093811035}
