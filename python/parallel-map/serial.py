@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from typing import Callable, List, TypeVar
 
 from main import main

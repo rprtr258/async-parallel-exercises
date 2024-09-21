@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from typing import Callable, List, TypeVar
 
