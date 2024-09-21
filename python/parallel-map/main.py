@@ -1,8 +1,6 @@
 import argparse
 from os import cpu_count
-from typing import Any, Callable, List, TypeVar
-
-from numpy import is_busday
+from typing import Callable, List, TypeVar, Iterator
 
 A, B = TypeVar("A"), TypeVar("B")
 
@@ -33,8 +31,7 @@ def factorize(n: int) -> int:
             break
     return res
 
-def split_chunks(lst: List[A], chunks: int) -> List[List[A]]:
-    from math import floor
+def split_chunks(lst: List[A], chunks: int) -> Iterator[List[A]]:
     chunk_size, chunk_rest = divmod(len(lst), chunks)
     i = 0
     while i < len(lst):
