@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 def info(msg: str) -> None:
   print("[INFO]", msg)
 
-def bench_label(file: str, params: Dict[str, Any]) -> str:
-  params = ", ".join(f"{p[0]}={p[1]}" for p in params.items())
+def label(file: str, **kwargs: Dict[str, Any]) -> str:
+  params = ", ".join(f"{p[0]}={p[1]}" for p in kwargs.items())
   return f"{file}({params})"
 
 tries = 2
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     "is_prime": {
       "serial": ["python/parallel-map/serial.py", "-n", str(n), "-f", "is_prime"],
     } | {
-      bench_label("procs", {"p": p}): ["python/parallel-map/procs.py", "-p", str(p), "-n", str(n), "-f", "is_prime"]
+      label("procs", p=p): ["python/parallel-map/procs.py", "-p", str(p), "-n", str(n), "-f", "is_prime"]
       # "procs_futures": lambda p, n: cmd("python/parallel-map/procs_futures.py", "-p", str(p), "-n", str(n), "-f", "is_prime"),
       # "python/parallel-map/procs_poolmap.py",
       # "python/parallel-map/procs_queue.py",
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     "factorize": {
       "serial": ["python/parallel-map/serial.py", "-n", str(n), "-f", "factorize"],
     } | {
-      bench_label("procs", {"p": p}): ["python/parallel-map/procs.py", "-p", str(p), "-n", str(n), "-f", "factorize"]
+      label("procs", p=p): ["python/parallel-map/procs.py", "-p", str(p), "-n", str(n), "-f", "factorize"]
       # "procs_futures": lambda p, n: cmd("python/parallel-map/procs_futures.py", "-p", str(p), "-n", str(n), "-f", "is_prime"),
       # "python/parallel-map/procs_poolmap.py",
       # "python/parallel-map/procs_queue.py",
